@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Process — Eugene Gyasi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+
+  <style>
+    /* Timeline strip under the header */
+    .timeline {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline a {
+      padding: 22px 0 22px 0;
+      border-right: 1px solid var(--line);
+      padding-left: 18px;
+      display: grid; gap: 10px;
+      transition: background .2s ease;
+    }
+    .timeline a:first-child { padding-left: 0; }
+    .timeline a:last-child { border-right: 0; }
+    .timeline a:hover { background: #efe9e2; }
+    .timeline span:last-child { font-size: 18px; letter-spacing: -.01em; }
+
+    /* Each stage */
+    .stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 96px);
+      align-items: start;
+      padding-top: clamp(64px, 8vw, 120px);
+      padding-bottom: clamp(64px, 8vw, 120px);
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 40px;
+    }
+    .stage:nth-child(even) .stage-media { order: -1; }
+    .stage-text { position: sticky; top: 100px; }
+    .stage-num {
+      font: 400 clamp(80px, 10vw, 170px)/.8 var(--sans);
+      letter-spacing: -.06em; color: var(--wine);
+      margin-bottom: 24px;
+    }
+    .stage h2 { font: 400 clamp(36px, 4vw, 64px)/1 var(--sans); letter-spacing: -.04em; margin: 14px 0 22px; }
+    .stage .desc { font-size: clamp(17px, 1.3vw, 20px); line-height: 1.6; color: #4d4842; margin: 0 0 32px; max-width: 44ch; }
+
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .facts ul { list-style: none; margin: 12px 0 0; padding: 0; }
+    .facts li { padding: 6px 0; font-size: 15px; }
+    .facts li::before { content: "→ "; color: var(--muted); }
+    .facts p { margin: 12px 0 0; font-size: 15px; }
+
+    .stage-media { display: grid; gap: 16px; }
+    .stage-media img {
+      width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+      border-radius: 3px; background: #e3ddd4;
+    }
+    .stage-media .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stage-media .pair img { aspect-ratio: 1; }
+    .caption { color: var(--muted); }
+
+    /* Deliverables */
+    .deliver {
+      background: var(--wine-deep); color: var(--cream);
+    }
+    .deliver .split > .label { color: var(--cream-muted); }
+    .deliver-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--cream-faint);
+      margin-top: 40px;
+    }
+    .deliver-item {
+      padding: 28px 24px 28px 0;
+      border-bottom: 1px solid var(--cream-faint);
+    }
+    .deliver-item h3 { font: 400 22px/1.2 var(--sans); margin: 14px 0 8px; letter-spacing: -.01em; }
+    .deliver-item p { margin: 0; color: var(--cream-muted); line-height: 1.6; font-size: 15px; }
+
+    /* FAQ */
+    .faq details { border-top: 1px solid var(--line); }
+    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      padding: 26px 0;
+      font: 400 clamp(19px, 1.6vw, 26px)/1.3 var(--sans); letter-spacing: -.015em;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+"; font: 400 24px var(--mono);
+      transition: transform .3s ease; flex: none;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin: 0 0 28px; color: #4d4842; line-height: 1.7; max-width: 60ch; font-size: 16px; }
+
+    @media (max-width: 900px) {
+      .timeline { grid-template-columns: repeat(5, minmax(120px, 1fr)); overflow-x: auto; }
+      .stage { grid-template-columns: 1fr; }
+      .stage:nth-child(even) .stage-media { order: 0; }
+      .stage-text { position: static; }
+      .deliver-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .deliver-grid, .facts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav class="nav" aria-label="Main navigation">
+    <a href="contact.html" class="contact-link" aria-label="Contact" title="Contact">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
+    </a>
+    <a href="index.html" class="logo" aria-label="Home">E</a>
+    <button id="menuButton" aria-label="Open menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10h12M6 14h12"/></svg>
+    </button>
+    <div class="menu label" id="menu">
+      <a href="work.html">The Work</a>
+      <a href="process.html" aria-current="page">The Process</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+  <header class="page-head">
+    <div class="label">( Act II — The Process )</div>
+    <h1>How a brand comes <em>to life.</em></h1>
+    <p class="lead">Whether for a founder or an in-house team, the process stays the same: five clear stages, shared openly, so there are no surprises on opening night.</p>
+    <div class="head-meta label">
+      <span>Stages<b>05</b></span>
+      <span>Typical project<b>6 — 10 weeks</b></span>
+      <span>Check-ins<b>Weekly</b></span>
+    </div>
+  </header>
+
+  <!-- ================= TIMELINE ================= -->
+  <nav class="timeline wrap" aria-label="Process stages">
+    <a href="#listen"><span class="label muted">01 · Week 1</span><span>Listen</span></a>
+    <a href="#shape"><span class="label muted">02 · Week 2–3</span><span>Shape</span></a>
+    <a href="#make"><span class="label muted">03 · Week 4–6</span><span>Make</span></a>
+    <a href="#refine"><span class="label muted">04 · Week 7–8</span><span>Refine</span></a>
+    <a href="#launch"><span class="label muted">05 · Week 9+</span><span>Launch</span></a>
+  </nav>
+
+  <!-- ================= STAGES ================= -->
+  <main class="wrap">
+
+    <section class="stage" id="listen">
+      <div class="stage-text reveal">
+        <div class="stage-num">01</div>
+        <div class="label muted">( Scene One )</div>
+        <h2>Listen</h2>
+        <p class="desc">I get to know the business, its audience and what isn’t quite working yet. We talk, I ask a lot of questions, and I study the market you’re stepping into.</p>
+        <div class="facts">
+          <div><span class="label muted">What happens</span>
+            <ul><li>Discovery call</li><li>Brand questionnaire</li><li>Competitor audit</li></ul></div>
+          <div><span class="label muted">You get</span>
+            <ul><li>Project brief</li><li>Timeline &amp; plan</li></ul></div>
+        </div>
+      </div>
+      <div class="stage-media reveal">
+        <img src="https://picsum.photos/seed/process-listen/900/1125" alt="Discovery workshop">
+        <span class="caption label">Fig. 01 — Discovery workshop</span>
+      </div>
+    </section>
+
+    <section class="stage" id="shape">
+      <div class="stage-text reveal">
+        <div class="stage-num">02</div>
+        <div class="label muted">( Scene Two )</div>
+        <h2>Shape</h2>
+        <p class="desc">Research and insight become a clear direction. I share it early, through words and moodboards, so everyone agrees on where we’re heading before any logo is drawn.</p>
+        <div class="facts">
+          <div><span class="label muted">What happens</span>
+            <ul><li>Positioning &amp; values</li><li>Tone of voice</li><li>Creative routes</li></ul></div>
+          <div><span class="label muted">You get</span>
+            <ul><li>Strategy deck</li><li>2–3 moodboards</li></ul></div>
+        </div>
+      </div>
+      <div class="stage-media reveal">
+        <img src="https://picsum.photos/seed/process-shape/900/1125" alt="Moodboards">
+        <span class="caption label">Fig. 02 — Moodboards &amp; direction</span>
+      </div>
+    </section>
+
+    <section class="stage" id="make">
+      <div class="stage-text reveal">
+        <div class="stage-num">03</div>
+        <div class="label muted">( Scene Three )</div>
+        <h2>Make</h2>
+        <p class="desc">The identity comes to life: logo, type, colour, imagery and all the details that turn separate pieces into one system.</p>
+        <div class="facts">
+          <div><span class="label muted">What happens</span>
+            <ul><li>Logo exploration</li><li>Typography &amp; colour</li><li>Graphic language</li></ul></div>
+          <div><span class="label muted">You get</span>
+            <ul><li>Identity presentation</li><li>Real-world mockups</li></ul></div>
+        </div>
+      </div>
+      <div class="stage-media reveal">
+        <img src="https://picsum.photos/seed/process-make/900/1125" alt="Identity design">
+        <div class="pair">
+          <img src="https://picsum.photos/seed/process-make-2/600/600" alt="Type specimen">
+          <img src="https://picsum.photos/seed/process-make-3/600/600" alt="Colour palette">
+        </div>
+        <span class="caption label">Fig. 03 — Identity in progress</span>
+      </div>
+    </section>
+
+    <section class="stage" id="refine">
+      <div class="stage-text reveal">
+        <div class="stage-num">04</div>
+        <div class="label muted">( Scene Four )</div>
+        <h2>Refine</h2>
+        <p class="desc">Feedback comes in, details get sharper, and the brand is tested across real applications, from signage to social posts.</p>
+        <div class="facts">
+          <div><span class="label muted">What happens</span>
+            <ul><li>Two rounds of revisions</li><li>Application testing</li><li>Final polish</li></ul></div>
+          <div><span class="label muted">You get</span>
+            <ul><li>Approved identity</li><li>Applications set</li></ul></div>
+        </div>
+      </div>
+      <div class="stage-media reveal">
+        <img src="https://picsum.photos/seed/process-refine/900/1125" alt="Refinement">
+        <span class="caption label">Fig. 04 — Testing in the real world</span>
+      </div>
+    </section>
+
+    <section class="stage" id="launch">
+      <div class="stage-text reveal">
+        <div class="stage-num">05</div>
+        <div class="label muted">( Scene Five )</div>
+        <h2>Launch</h2>
+        <p class="desc">A complete brand, with the files and guidelines that keep any team consistent as it grows. I stay on hand for questions after the curtain goes up.</p>
+        <div class="facts">
+          <div><span class="label muted">What happens</span>
+            <ul><li>File preparation</li><li>Guidelines handover</li><li>Launch support</li></ul></div>
+          <div><span class="label muted">You get</span>
+            <ul><li>Brand guidelines</li><li>Full asset library</li></ul></div>
+        </div>
+      </div>
+      <div class="stage-media reveal">
+        <img src="https://picsum.photos/seed/process-launch/900/1125" alt="Brand launch">
+        <span class="caption label">Fig. 05 — Opening night</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= DELIVERABLES ================= -->
+  <section class="deliver">
+    <div class="section wrap split">
+      <div class="label">( The Programme )</div>
+      <div>
+        <h2 class="h2">Everything you leave with.</h2>
+        <div class="deliver-grid">
+          <div class="deliver-item reveal"><span class="label">01</span><h3>Logo suite</h3><p>Primary logo, alternates and icon, in every format you’ll need.</p></div>
+          <div class="deliver-item reveal"><span class="label">02</span><h3>Colour &amp; type</h3><p>A considered palette and type system, with clear rules for use.</p></div>
+          <div class="deliver-item reveal"><span class="label">03</span><h3>Brand guidelines</h3><p>A practical guide that keeps your team consistent.</p></div>
+          <div class="deliver-item reveal"><span class="label">04</span><h3>Graphic elements</h3><p>Patterns, icons and textures that make the brand yours.</p></div>
+          <div class="deliver-item reveal"><span class="label">05</span><h3>Templates</h3><p>Social, stationery and presentation templates, ready to use.</p></div>
+          <div class="deliver-item reveal"><span class="label">06</span><h3>Launch support</h3><p>Two weeks of help after handover for any questions.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section wrap split faq">
+    <div class="label">( Questions )</div>
+    <div>
+      <h2 class="h2">Good to know.</h2>
+      <details open>
+        <summary>How long does a brand identity project take?</summary>
+        <p>Most identity projects take 6 to 10 weeks, depending on scope and how quickly feedback comes back. A clear timeline is agreed at the start.</p>
+      </details>
+      <details>
+        <summary>How much does a project cost?</summary>
+        <p>Every project is different, so I quote after our first call. Identity projects usually start from $1,500. A 50% deposit books your slot.</p>
+      </details>
+      <details>
+        <summary>Do you work with clients outside Ghana?</summary>
+        <p>Yes. I work with clients across Africa, Europe and North America. Calls and presentations happen over video, and time zones are rarely a problem.</p>
+      </details>
+      <details>
+        <summary>How many revisions are included?</summary>
+        <p>Two rounds of revisions are included at the Refine stage. Because direction is agreed early, big changes late in the project are rare.</p>
+      </details>
+      <details>
+        <summary>Will I own the final files?</summary>
+        <p>Yes. Once the final payment is made, full ownership of the final brand assets is transferred to you.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="curtain" aria-hidden="true"></div>
+  <footer class="footer">
+    <div class="label">( Curtain Call )</div>
+    <h2>Ready when<br>you are.</h2>
+    <a href="contact.html" class="btn">Book a Call <span class="box">→</span></a>
+    <div class="footer-row label">
+      <nav>
+        <a href="work.html">The Work</a>
+        <a href="process.html">The Process</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <span>© <span data-year></span> Eugene Gyasi</span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
