@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eugene Gyasi — Brand Designer</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,9 +103,9 @@
       transition: background .2s ease;
     }
     .nav .contact-link:hover { background: rgba(255,255,255,.08); }
-    .nav .logo {
-      font: italic 500 28px/1 'Playfair Display', Georgia, serif;
-    }
+    .nav .logo { display: block; line-height: 0; transition: opacity .2s ease; }
+    .nav .logo:hover { opacity: .8; }
+    .nav .logo img { height: 36px; width: auto; }
     .menu {
       position: absolute;
       top: calc(100% + 6px);
@@ -174,7 +176,7 @@
       font: 400 clamp(17px, 1.45vw, 26px)/1.4 var(--sans);
       color: var(--cream);
       opacity: .9;
-      max-width: 22ch;
+      max-width: 34ch;
       margin: 0 0 clamp(36px, 5vw, 64px);
     }
 
@@ -364,6 +366,8 @@
     @media (min-width: 901px) {
       .cards { display: contents; }
     }
+      .footer-logo { display: block; line-height: 0; }
+    .footer-logo img { height: 44px; width: auto; }
   </style>
 </head>
 
@@ -378,7 +382,7 @@
       </svg>
     </a>
 
-    <a href="#top" class="logo" aria-label="Home">E</a>
+    <a href="#top" class="logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
 
     <button id="menuButton" aria-label="Open menu" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -388,6 +392,8 @@
 
     <div class="menu label" id="menu">
       <a href="work.html">The Work</a>
+      <a href="case-studies/index.html">Case Studies</a>
+      <a href="services.html">Services</a>
       <a href="process.html">The Process</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -405,16 +411,12 @@
     </div>
 
     <div class="hero-content">
-      <div class="label">( Now Showing )</div>
       <h1>Eugene Gyasi</h1>
-      <p class="hero-sub">A brand designer crafting intentional brand experiences.</p>
-      <a href="#contact" class="btn">Reach Out <span class="box">→</span></a>
+      <p class="hero-sub">Multidisciplinary Creative Associate bridging complex systems and visual storytelling across Africa's tech and social impact ecosystems.</p>
+      <a href="contact.html" class="btn">Reach Out <span class="box">→</span></a>
     </div>
 
     <div class="hero-bottom">
-      <a href="#work"><span class="muted">Act I</span>The Work</a>
-      <a href="#process" class="hide-sm"><span class="muted">Act II</span>The Process</a>
-      <span><span class="muted">Accra</span><span id="clock">--:--</span></span>
       <a href="#prologue" class="btn">Take Your Seat ↓</a>
     </div>
   </header>
@@ -427,23 +429,21 @@
 
       <div class="intro-copy">
         <p>
-          I’m Eugene Gyasi <img class="chip" src="https://picsum.photos/seed/eugene-portrait/120/80" alt="">,
-          a brand identity designer based in Accra. I build thoughtful brands for businesses that want
-          to be understood and taken seriously. Every project is a small production, and I like to get
-          the details right before the curtain goes up.
+          Every great brand tells a story, but the most enduring ones reveal a system. I am a
+          multidisciplinary creative rooted in Accra, specializing in transforming complex technical
+          and strategic concepts into clear, engaging visual experiences.
         </p>
         <p>
-          I create <span class="hover-word" data-img="https://picsum.photos/seed/identity-work/480/600">identities</span>
-          <img class="chip" src="https://picsum.photos/seed/identity-chip/120/80" alt="">
-          that give businesses a clear way to show up and be remembered. From the thinking behind the
-          <span class="hover-word" data-img="https://picsum.photos/seed/brand-strategy/480/600">brand</span>
+          From coaching startup founders through their
+          <span class="hover-word" data-img="https://picsum.photos/seed/pitch-decks/480/600">pitch decks</span>
           <img class="chip" src="https://picsum.photos/seed/brand-chip/120/80" alt="">
-          to the <span class="hover-word" data-img="https://picsum.photos/seed/visual-system/480/600">visual system</span>
+          to architecting comprehensive
+          <span class="hover-word" data-img="https://picsum.photos/seed/identity-work/480/600">identities</span>
+          <img class="chip" src="https://picsum.photos/seed/identity-chip/120/80" alt="">
+          for ecosystem leaders, I build flexible
+          <span class="hover-word" data-img="https://picsum.photos/seed/visual-system/480/600">visual systems</span>
           <img class="chip" src="https://picsum.photos/seed/system-chip/120/80" alt="">
-          that brings it to life, I work through the
-          <span class="hover-word" data-img="https://picsum.photos/seed/fine-details/480/600">details</span>
-          <img class="chip" src="https://picsum.photos/seed/details-chip/120/80" alt="">
-          to make sure everything feels connected and true to the business.
+          that help complex ideas land with clarity, across Africa’s tech and social impact ecosystems.
         </p>
         <div class="label hint">⌘ Hover the underlined words to see the work</div>
       </div>
@@ -454,26 +454,25 @@
       <div class="orbit" aria-hidden="true"></div>
 
       <div class="work-center">
-        <div class="label">( Act I — The Work )</div>
         <h2>Brands and identities,<br>designed for people who<br>are full of ideas.</h2>
         <a class="btn" href="work.html">See All Work <span class="box">→</span></a>
       </div>
 
       <div class="cards">
-        <a href="#" class="card c1"><img src="https://picsum.photos/seed/work-01/400/400" alt="Project 01"><small>No. 01</small></a>
-        <a href="#" class="card c2"><img src="https://picsum.photos/seed/work-02/400/400" alt="Project 02"><small>No. 02</small></a>
-        <a href="#" class="card c3"><img src="https://picsum.photos/seed/work-03/400/400" alt="Project 03"><small>No. 03</small></a>
-        <a href="#" class="card c4"><img src="https://picsum.photos/seed/work-04/400/400" alt="Project 04"><small>No. 04</small></a>
-        <a href="#" class="card c5"><img src="https://picsum.photos/seed/work-05/400/400" alt="Project 05"><small>No. 05</small></a>
-        <a href="#" class="card c6"><img src="https://picsum.photos/seed/work-06/400/400" alt="Project 06"><small>No. 06</small></a>
-        <a href="#" class="card c7"><img src="https://picsum.photos/seed/work-07/400/400" alt="Project 07"><small>No. 07</small></a>
-        <a href="#" class="card c8"><img src="https://picsum.photos/seed/work-08/400/400" alt="Project 08"><small>No. 08</small></a>
+        <a href="case-studies/mastercard-foundation-edtech-fellowship.html" class="card c1"><img src="https://picsum.photos/seed/mcf-hero/400/400" alt="Mastercard Foundation"><small>Mastercard Foundation</small></a>
+        <a href="case-studies/stay-by-plan.html" class="card c2"><img src="https://picsum.photos/seed/sbp-hero/400/400" alt="Stay By Plan"><small>Stay By Plan</small></a>
+        <a href="case-studies/eaak-football-club.html" class="card c3"><img src="https://picsum.photos/seed/eaak-hero/400/400" alt="EAAK Football Club"><small>EAAK Football Club</small></a>
+        <a href="case-studies/edtech-mondays.html" class="card c4"><img src="https://picsum.photos/seed/etm-hero/400/400" alt="EdTech Mondays"><small>EdTech Mondays</small></a>
+        <a href="case-studies/mastercard-foundation-edtech-fellowship.html" class="card c5"><img src="https://picsum.photos/seed/mcf-4/400/400" alt="Mastercard Foundation"><small>Mastercard Foundation</small></a>
+        <a href="case-studies/stay-by-plan.html" class="card c6"><img src="https://picsum.photos/seed/sbp-4/400/400" alt="Stay By Plan"><small>Stay By Plan</small></a>
+        <a href="case-studies/eaak-football-club.html" class="card c7"><img src="https://picsum.photos/seed/eaak-4/400/400" alt="EAAK Football Club"><small>EAAK Football Club</small></a>
+        <a href="case-studies/edtech-mondays.html" class="card c8"><img src="https://picsum.photos/seed/etm-4/400/400" alt="EdTech Mondays"><small>EdTech Mondays</small></a>
       </div>
     </section>
 
     <!-- ================= PROCESS ================= -->
     <section class="section split" id="process">
-      <div class="label">( Act II — The Process )</div>
+      <div aria-hidden="true"></div>
 
       <div>
         <p class="process-lead">Whether for a founder or an in-house team, the process stays the same.</p>
@@ -497,11 +496,11 @@
   <div class="curtain" aria-hidden="true"></div>
 
   <footer class="footer" id="contact">
-    <div class="label">( Curtain Call )</div>
     <h2>Let’s make<br>something together.</h2>
-    <a href="mailto:hello@eugenegyasi.com" class="btn">Reach Out <span class="box">→</span></a>
+    <a href="contact.html" class="btn">Reach Out <span class="box">→</span></a>
 
     <div class="footer-row label">
+      <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
       <nav>
         <a href="#">Instagram</a>
         <a href="#">Behance</a>
@@ -526,15 +525,6 @@
       menu.classList.remove('open');
       menuBtn.setAttribute('aria-expanded', false);
     }));
-
-    // Live Accra clock
-    const clock = document.getElementById('clock');
-    const tick = () => {
-      clock.textContent = new Intl.DateTimeFormat('en-GB', {
-        hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Accra'
-      }).format(new Date());
-    };
-    tick(); setInterval(tick, 15000);
 
     document.getElementById('year').textContent = new Date().getFullYear();
 

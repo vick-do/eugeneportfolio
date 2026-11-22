@@ -71,7 +71,9 @@ img { display: block; max-width: 100%; }
   transition: background .2s ease;
 }
 .nav .contact-link:hover { background: rgba(255,255,255,.08); }
-.nav .logo { font: italic 500 28px/1 var(--serif); }
+.nav .logo { display: block; line-height: 0; transition: opacity .2s ease; }
+.nav .logo:hover { opacity: .8; }
+.nav .logo img { height: 36px; width: auto; }
 .menu {
   position: absolute; top: calc(100% + 6px); left: 0; right: 0;
   background: var(--bar); border-radius: 3px; padding: 10px; display: none;
@@ -160,3 +162,7 @@ img { display: block; max-width: 100%; }
   .split { grid-template-columns: 1fr; gap: 20px; }
   .page-head { padding-top: 130px; }
 }
+
+/* Footer logo */
+.footer-logo { display: block; line-height: 0; }
+.footer-logo img { height: 44px; width: auto; }

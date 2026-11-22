@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &amp; Pricing — Brand Identity, Packaging, Editorial &amp; Web | Eugene Gyasi</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="description" content="Brand design services from Eugene Gyasi in Accra, Ghana. Brand identity from $1,500, packaging from $1,200, editorial design from $800 and web design from $2,000.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Services &amp; Pricing — Eugene Gyasi">
+  <meta property="og:description" content="Brand identity, packaging, editorial and web design, with clear starting prices.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+
+  <style>
+    /* Jump links */
+    .jump {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(247,243,238,.92); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .jump a {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 20px 18px; border-right: 1px solid var(--line);
+      transition: background .2s ease;
+    }
+    .jump a:first-child { padding-left: 0; }
+    .jump a:last-child { border-right: 0; }
+    .jump a:hover { background: #efe9e2; }
+    .jump .name { font-size: 18px; letter-spacing: -.01em; }
+    .jump .from { color: var(--wine); }
+
+    /* Service sections */
+    .service {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: clamp(32px, 5vw, 96px);
+      padding-top: clamp(64px, 8vw, 120px); padding-bottom: clamp(64px, 8vw, 120px);
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 70px;
+    }
+    .service-num {
+      font: 400 clamp(72px, 8vw, 140px)/.8 var(--sans);
+      letter-spacing: -.06em; color: var(--wine); margin-bottom: 24px;
+    }
+    .service h2 { font: 400 clamp(38px, 4.2vw, 68px)/1 var(--sans); letter-spacing: -.04em; margin: 14px 0 22px; }
+    .service .pitch { font-size: clamp(17px, 1.3vw, 20px); line-height: 1.6; color: #4d4842; margin: 0 0 36px; max-width: 46ch; }
+
+    .includes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .includes ul { list-style: none; margin: 12px 0 0; padding: 0; }
+    .includes li { padding: 6px 0; font-size: 15px; }
+    .includes li::before { content: "→ "; color: var(--muted); }
+
+    /* Price card */
+    .price-card {
+      background: var(--wine); color: var(--cream);
+      border-radius: 4px; padding: clamp(28px, 3vw, 44px);
+      position: sticky; top: 90px;
+    }
+    .price-card .label { color: var(--cream-muted); }
+    .price-card .price {
+      font: 400 clamp(52px, 5vw, 88px)/1 var(--sans);
+      letter-spacing: -.05em; margin: 14px 0 8px;
+    }
+    .price-card .note { color: var(--cream-muted); font-size: 15px; margin: 0 0 26px; }
+    .price-card dl { display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; margin: 0 0 30px; padding-top: 22px; border-top: 1px solid var(--cream-faint); font-size: 15px; }
+    .price-card dt { color: var(--cream-muted); }
+    .price-card dd { margin: 0; }
+    .example {
+      display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center;
+      margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--cream-faint);
+    }
+    .example img { width: 96px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; background: #3e1310; }
+    .example strong { display: block; font-weight: 400; font-size: 18px; margin-top: 6px; }
+    .example:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* Pricing notes */
+    .notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .note-card { background: #efe9e2; border-radius: 3px; padding: 28px; }
+    .note-card h3 { font: 400 22px/1.2 var(--sans); margin: 14px 0 10px; letter-spacing: -.01em; }
+    .note-card p { margin: 0; color: #4d4842; line-height: 1.6; font-size: 15px; }
+
+    @media (max-width: 900px) {
+      .jump { grid-template-columns: repeat(4, minmax(150px, 1fr)); overflow-x: auto; }
+      .service { grid-template-columns: 1fr; }
+      .price-card { position: static; }
+      .notes { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .includes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav class="nav" aria-label="Main navigation">
+    <a href="contact.html" class="contact-link" aria-label="Contact" title="Contact">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>
+    </a>
+    <a href="index.html" class="logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
+    <button id="menuButton" aria-label="Open menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10h12M6 14h12"/></svg>
+    </button>
+    <div class="menu label" id="menu">
+      <a href="work.html">The Work</a>
+      <a href="case-studies/index.html">Case Studies</a>
+      <a href="services.html" aria-current="page">Services</a>
+      <a href="process.html">The Process</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+  <header class="page-head">
+    <div class="label">( Services &amp; Pricing )</div>
+    <h1>What I can make <em>for you.</em></h1>
+    <p class="lead">Four ways to work together, each with a clear starting price. Every project gets a fixed quote after a free 30-minute call, so you know the full cost before we begin.</p>
+  </header>
+
+  <!-- ================= JUMP LINKS ================= -->
+  <nav class="jump wrap" aria-label="Services">
+    <a href="#identity"><span class="name">Identity</span><span class="from label">From $1,500</span></a>
+    <a href="#packaging"><span class="name">Packaging</span><span class="from label">From $1,200</span></a>
+    <a href="#editorial"><span class="name">Editorial</span><span class="from label">From $800</span></a>
+    <a href="#web"><span class="name">Web</span><span class="from label">From $2,000</span></a>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- ================= IDENTITY ================= -->
+    <section class="service" id="identity">
+      <div class="reveal">
+        <div class="service-num">01</div>
+        <div class="label muted">( Service )</div>
+        <h2>Brand Identity</h2>
+        <p class="pitch">A complete visual identity that gives your business a clear, memorable way to show up. From the strategy behind the brand to the logo, colours and type that bring it to life.</p>
+        <div class="includes">
+          <div><span class="label muted">What’s included</span>
+            <ul><li>Discovery &amp; brand strategy</li><li>Logo suite &amp; icon</li><li>Colour &amp; type system</li><li>Graphic elements</li><li>Brand guidelines</li><li>Social &amp; stationery templates</li></ul></div>
+          <div><span class="label muted">Ideal for</span>
+            <ul><li>New businesses launching</li><li>Brands that have outgrown their look</li><li>Founders raising investment</li></ul></div>
+        </div>
+      </div>
+      <aside class="price-card reveal">
+        <span class="label">Starting from</span>
+        <div class="price">$1,500</div>
+        <p class="note">Fixed quote after a free call</p>
+        <dl>
+          <dt>Timeline</dt><dd>6–10 weeks</dd>
+          <dt>Revisions</dt><dd>2 rounds included</dd>
+          <dt>Deposit</dt><dd>50% to book your slot</dd>
+        </dl>
+        <a class="btn" href="contact.html?service=identity">Enquire about Identity <span class="box">→</span></a>
+        <a class="example" href="case-studies/stay-by-plan.html">
+          <img src="https://picsum.photos/seed/sbp-hero/400/300" alt="Stay By Plan" loading="lazy">
+          <span><span class="label">See a case study</span><strong>Stay By Plan →</strong></span>
+        </a>
+      </aside>
+    </section>
+
+    <!-- ================= PACKAGING ================= -->
+    <section class="service" id="packaging">
+      <div class="reveal">
+        <div class="service-num">02</div>
+        <div class="label muted">( Service )</div>
+        <h2>Packaging</h2>
+        <p class="pitch">Packaging that earns its place on the shelf. Designed to look good in photos, feel good in the hand and tell your product’s story in the few seconds a customer gives it.</p>
+        <div class="includes">
+          <div><span class="label muted">What’s included</span>
+            <ul><li>Shelf &amp; competitor audit</li><li>Packaging concept</li><li>Label &amp; box design</li><li>Print-ready dielines</li><li>Printer liaison</li><li>Range extension rules</li></ul></div>
+          <div><span class="label muted">Ideal for</span>
+            <ul><li>Food, drink &amp; beauty brands</li><li>Products going into retail</li><li>Ranges with several variants</li></ul></div>
+        </div>
+      </div>
+      <aside class="price-card reveal">
+        <span class="label">Starting from</span>
+        <div class="price">$1,200</div>
+        <p class="note">Per product · fixed quote after a free call</p>
+        <dl>
+          <dt>Timeline</dt><dd>5–8 weeks</dd>
+          <dt>Revisions</dt><dd>2 rounds included</dd>
+          <dt>Extra variants</dt><dd>Quoted per variant</dd>
+        </dl>
+        <a class="btn" href="contact.html?service=packaging">Enquire about Packaging <span class="box">→</span></a>
+      </aside>
+    </section>
+
+    <!-- ================= EDITORIAL ================= -->
+    <section class="service" id="editorial">
+      <div class="reveal">
+        <div class="service-num">03</div>
+        <div class="label muted">( Service )</div>
+        <h2>Editorial</h2>
+        <p class="pitch">Books, magazines, reports and posters with real typographic care. Layouts that make long content easy to read and printed pieces people want to keep.</p>
+        <div class="includes">
+          <div><span class="label muted">What’s included</span>
+            <ul><li>Cover &amp; layout design</li><li>Typography system</li><li>Grid &amp; page templates</li><li>Image &amp; illustration direction</li><li>Print-ready files</li></ul></div>
+          <div><span class="label muted">Ideal for</span>
+            <ul><li>Publishers &amp; authors</li><li>Annual &amp; impact reports</li><li>Events, festivals &amp; posters</li></ul></div>
+        </div>
+      </div>
+      <aside class="price-card reveal">
+        <span class="label">Starting from</span>
+        <div class="price">$800</div>
+        <p class="note">Fixed quote based on page count</p>
+        <dl>
+          <dt>Timeline</dt><dd>3–8 weeks</dd>
+          <dt>Revisions</dt><dd>2 rounds included</dd>
+          <dt>Templates</dt><dd>Editable files for your team</dd>
+        </dl>
+        <a class="btn" href="contact.html?service=editorial">Enquire about Editorial <span class="box">→</span></a>
+        <a class="example" href="case-studies/mastercard-foundation-edtech-fellowship.html">
+          <img src="https://picsum.photos/seed/mcf-hero/400/300" alt="Mastercard Foundation" loading="lazy">
+          <span><span class="label">See a case study</span><strong>Mastercard Foundation →</strong></span>
+        </a>
+      </aside>
+    </section>
+
+    <!-- ================= WEB ================= -->
+    <section class="service" id="web">
+      <div class="reveal">
+        <div class="service-num">04</div>
+        <div class="label muted">( Service )</div>
+        <h2>Web</h2>
+        <p class="pitch">A website that looks like your brand and works hard for your business. Designed around what your visitors need to find, and built to be easy for you to update.</p>
+        <div class="includes">
+          <div><span class="label muted">What’s included</span>
+            <ul><li>Site map &amp; page planning</li><li>Design for desktop &amp; mobile</li><li>Up to 6 pages</li><li>Build &amp; launch</li><li>Basic SEO setup</li><li>Handover training</li></ul></div>
+          <div><span class="label muted">Ideal for</span>
+            <ul><li>Studios &amp; portfolios</li><li>Service businesses</li><li>Brands after a new identity</li></ul></div>
+        </div>
+      </div>
+      <aside class="price-card reveal">
+        <span class="label">Starting from</span>
+        <div class="price">$2,000</div>
+        <p class="note">Fixed quote after a free call</p>
+        <dl>
+          <dt>Timeline</dt><dd>6–10 weeks</dd>
+          <dt>Revisions</dt><dd>2 rounds included</dd>
+          <dt>Support</dt><dd>30 days after launch</dd>
+        </dl>
+        <a class="btn" href="contact.html?service=web">Enquire about Web <span class="box">→</span></a>
+      </aside>
+    </section>
+
+  </main>
+
+  <!-- ================= PRICING NOTES ================= -->
+  <section class="section wrap split">
+    <div class="label">( Good to Know )</div>
+    <div>
+      <h2 class="h2">How pricing works.</h2>
+      <div class="notes">
+        <div class="note-card reveal"><span class="label muted">01</span><h3>Free first call</h3><p>We talk through your project for 30 minutes. No cost, no pressure.</p></div>
+        <div class="note-card reveal"><span class="label muted">02</span><h3>Fixed quote</h3><p>You get a clear quote and timeline in writing within two working days.</p></div>
+        <div class="note-card reveal"><span class="label muted">03</span><h3>Bundle &amp; save</h3><p>Combining services, like identity and web, comes with a discount.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="curtain" aria-hidden="true"></div>
+  <footer class="footer">
+    <h2>Not sure which<br>one you need?</h2>
+    <a href="contact.html" class="btn">Book a Free Call <span class="box">→</span></a>
+    <div class="footer-row label">
+      <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
+      <nav>
+        <a href="work.html">The Work</a>
+        <a href="case-studies/index.html">Case Studies</a>
+        <a href="services.html">Services</a>
+        <a href="process.html">The Process</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <span>© <span data-year></span> Eugene Gyasi</span>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

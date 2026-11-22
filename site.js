@@ -34,8 +34,10 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // Placeholder images fall back to the local image if offline
+// (path worked out from where site.js lives, so it also works in sub-folders)
+const SITE_ROOT = document.currentScript ? document.currentScript.src.replace(/site\.js.*$/, '') : '';
 document.querySelectorAll('img').forEach(img => {
   img.addEventListener('error', () => {
-    if (!img.src.endsWith('images/image.png')) img.src = 'images/image.png';
+    if (!img.src.endsWith('images/image.png')) img.src = SITE_ROOT + 'images/image.png';
   }, { once: true });
 });

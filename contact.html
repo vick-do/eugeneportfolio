@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Eugene Gyasi</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +70,9 @@
       box-shadow: 0 6px 24px rgba(0,0,0,.25);
     }
     .nav button { background: none; border: 0; padding: 0; color: inherit; cursor: pointer; display: grid; place-items: center; }
-    .nav .logo { font: italic 500 28px/1 'Playfair Display', Georgia, serif; }
+    .nav .logo { display: block; line-height: 0; transition: opacity .2s ease; }
+    .nav .logo:hover { opacity: .8; }
+    .nav .logo img { height: 36px; width: auto; }
     .nav .active { position: relative; }
     .nav .active::after {
       content: ""; position: absolute; left: 50%; bottom: -8px;
@@ -259,6 +263,8 @@
       .details { grid-template-columns: 1fr; }
       .panel-media .ticket { left: 24px; }
     }
+      .footer-logo { display: block; line-height: 0; }
+    .footer-logo img { height: 44px; width: auto; }
   </style>
 </head>
 
@@ -273,7 +279,7 @@
       </svg>
     </a>
 
-    <a href="index.html" class="logo" aria-label="Home">E</a>
+    <a href="index.html" class="logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
 
     <button id="menuButton" aria-label="Open menu" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -283,6 +289,8 @@
 
     <div class="menu label" id="menu">
       <a href="work.html">The Work</a>
+      <a href="case-studies/index.html">Case Studies</a>
+      <a href="services.html">Services</a>
       <a href="process.html">The Process</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -354,10 +362,11 @@
         <div class="field">
           <span class="label muted">What do you need?</span>
           <div class="chips" data-group="services" data-multi="true">
-            <button type="button" class="chip" aria-pressed="false">Brand identity</button>
-            <button type="button" class="chip" aria-pressed="false">Logo design</button>
+            <button type="button" class="chip" aria-pressed="false" data-service="identity">Brand identity</button>
+            <button type="button" class="chip" aria-pressed="false" data-service="packaging">Packaging</button>
+            <button type="button" class="chip" aria-pressed="false" data-service="editorial">Editorial</button>
+            <button type="button" class="chip" aria-pressed="false" data-service="web">Web design</button>
             <button type="button" class="chip" aria-pressed="false">Brand strategy</button>
-            <button type="button" class="chip" aria-pressed="false">Packaging</button>
             <button type="button" class="chip" aria-pressed="false">Something else</button>
           </div>
         </div>
@@ -399,6 +408,7 @@
 
   <div class="curtain" aria-hidden="true"></div>
   <footer class="label">
+    <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
     <nav>
       <a href="#">Instagram</a>
       <a href="#">Behance</a>
@@ -446,6 +456,12 @@
         });
       });
     });
+    // Pre-select a service when arriving from the Services or a Case Study page
+    // (e.g. contact.html?service=packaging)
+    const wanted = new URLSearchParams(location.search).get('service');
+    const wantedChip = wanted && document.querySelector(`.chip[data-service="${CSS.escape(wanted)}"]`);
+    if (wantedChip) wantedChip.setAttribute('aria-pressed', 'true');
+
     const picked = name => [...document.querySelectorAll(`[data-group="${name}"] .chip[aria-pressed="true"]`)]
       .map(c => c.textContent).join(', ') || '—';
 
