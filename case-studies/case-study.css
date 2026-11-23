@@ -19,6 +19,19 @@
 .gallery .tall { aspect-ratio: 4 / 5; }
 .gallery .full { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 .gallery .square { aspect-ratio: 1; }
+.gallery .half { aspect-ratio: 3 / 2; }
+.gallery .wide { grid-column: 1 / -1; aspect-ratio: auto; height: auto; }
+.gallery .video {
+  width: 100%; aspect-ratio: 9 / 16; border: 0; border-radius: 3px;
+  background: var(--ink); display: block;
+}
+.gallery video.video { object-fit: cover; }
+.gallery .stack { display: grid; grid-template-rows: 1fr 1fr; gap: 16px; min-height: 0; }
+.gallery .stack img { height: 100%; }
+@media (max-width: 900px) {
+  .gallery .stack { grid-template-rows: none; }
+  .gallery .stack img { height: auto; aspect-ratio: 4 / 3; }
+}
 
 /* At a glance results */
 .glance {

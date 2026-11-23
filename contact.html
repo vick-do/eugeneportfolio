@@ -265,6 +265,15 @@
     }
       .footer-logo { display: block; line-height: 0; }
     .footer-logo img { height: 44px; width: auto; }
+    .footer-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
+    .footer-contact .email { font: italic 500 clamp(15px, 1.15vw, 18px)/1 'Playfair Display', Georgia, serif; letter-spacing: .01em; text-transform: none; color: var(--cream); }
+    .footer-contact .phones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 12px; letter-spacing: .02em; color: var(--cream-muted); }
+    .footer-contact a { transition: color .2s ease; }
+    .footer-contact a:hover { color: #fff; }
+    @media (max-width: 700px) {
+      .footer-contact { align-items: flex-start; text-align: left; width: 100%; }
+      .footer-contact .phones { justify-content: flex-start; }
+    }
   </style>
 </head>
 
@@ -301,15 +310,14 @@
 
     <!-- ================= LEFT ================= -->
     <section class="intro">
-      <div class="label muted">( Box Office )</div>
       <h1>Let’s make something <em>together.</em></h1>
       <p class="lead">
         Have a brand that needs a clearer voice, or a new idea waiting for its first identity?
-        Tell me a little about it and I’ll get back to you within two working days.
+        Tell me a little about it and I’ll get back to you within 24 hours.
       </p>
 
-      <a class="email-link" href="mailto:hello@eugenegyasi.com">
-        hello@eugenegyasi.com <span aria-hidden="true">→</span>
+      <a class="email-link" href="mailto:eugenegyasihere@gmail.com">
+        eugenegyasihere@gmail.com <span aria-hidden="true">→</span>
       </a>
       <button class="copy-btn label" id="copyBtn" type="button">Copy email</button>
 
@@ -321,13 +329,12 @@
         <div>
           <span class="label muted">Based in</span>
           <p>Accra, Ghana</p>
-          <p class="muted">Local time <span id="clock">--:--</span></p>
         </div>
         <div>
           <span class="label muted">Elsewhere</span>
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">LinkedIn</a>
+          <a href="https://www.instagram.com/eugenegyasi_" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.behance.net/gyasieugen5d35" target="_blank" rel="noopener">Behance</a>
+          <a href="https://www.linkedin.com/in/eugene-gyasi" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -365,7 +372,7 @@
             <button type="button" class="chip" aria-pressed="false" data-service="identity">Brand identity</button>
             <button type="button" class="chip" aria-pressed="false" data-service="packaging">Packaging</button>
             <button type="button" class="chip" aria-pressed="false" data-service="editorial">Editorial</button>
-            <button type="button" class="chip" aria-pressed="false" data-service="web">Web design</button>
+            <button type="button" class="chip" aria-pressed="false" data-service="poster">Poster design</button>
             <button type="button" class="chip" aria-pressed="false">Brand strategy</button>
             <button type="button" class="chip" aria-pressed="false">Something else</button>
           </div>
@@ -391,7 +398,7 @@
         <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" style="display:none">
 
         <div class="form-foot">
-          <span class="label muted" id="formStatus">Replies within 2 working days</span>
+          <span class="label muted" id="formStatus">Replies within 24 hours</span>
           <button class="btn" type="submit">Send Enquiry <span class="box">→</span></button>
         </div>
       </form>
@@ -399,7 +406,7 @@
       <div class="success" role="status">
         <div class="label muted">( Curtain Up )</div>
         <h2>Thank you — your seat is saved.</h2>
-        <p>Your message has been sent. I’ll read it properly and be in touch within two working days.</p>
+        <p>Your message has been sent. I’ll read it properly and be in touch within 24 hours.</p>
         <a class="btn" href="index.html">Back to the show <span class="box">←</span></a>
       </div>
     </section>
@@ -410,17 +417,23 @@
   <footer class="label">
     <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
     <nav>
-      <a href="#">Instagram</a>
-      <a href="#">Behance</a>
-      <a href="#">LinkedIn</a>
+      <a href="https://www.instagram.com/eugenegyasi_" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.behance.net/gyasieugen5d35" target="_blank" rel="noopener">Behance</a>
+      <a href="https://www.linkedin.com/in/eugene-gyasi" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
-    <span class="muted">© <span id="year"></span> Eugene Gyasi</span>
+    <div class="footer-contact">
+      <a class="email" href="mailto:eugenegyasihere@gmail.com">eugenegyasihere@gmail.com</a>
+      <div class="phones">
+        <a href="tel:+233560914845">+233 56 091 4845</a>
+        <a href="tel:+233555491036">+233 55 549 1036</a>
+      </div>
+    </div>
   </footer>
 
   <script>
     // Enquiries are delivered to this address by FormSubmit (formsubmit.co).
     // DUMMY ADDRESS: replace it with your real email (see note at the end).
-    const EMAIL = 'hello@eugenegyasi.com';
+    const EMAIL = 'eugenegyasihere@gmail.com';
 
     // Menu
     const menuBtn = document.getElementById('menuButton');
@@ -429,13 +442,6 @@
       menuBtn.setAttribute('aria-expanded', menu.classList.toggle('open'));
     });
 
-    // Clock + year
-    const clock = document.getElementById('clock');
-    const tick = () => clock.textContent = new Intl.DateTimeFormat('en-GB', {
-      hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Accra'
-    }).format(new Date());
-    tick(); setInterval(tick, 15000);
-    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Copy email
     const copyBtn = document.getElementById('copyBtn');

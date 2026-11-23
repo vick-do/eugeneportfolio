@@ -166,3 +166,14 @@ img { display: block; max-width: 100%; }
 /* Footer logo */
 .footer-logo { display: block; line-height: 0; }
 .footer-logo img { height: 44px; width: auto; }
+
+/* Footer contact details */
+.footer-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
+.footer-contact .email { font: italic 500 clamp(15px, 1.15vw, 18px)/1 'Playfair Display', Georgia, serif; letter-spacing: .01em; text-transform: none; color: var(--cream); }
+.footer-contact .phones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 12px; letter-spacing: .02em; color: var(--cream-muted); }
+.footer-contact a { transition: color .2s ease; }
+.footer-contact a:hover { color: #fff; }
+@media (max-width: 700px) {
+  .footer-contact { align-items: flex-start; text-align: left; width: 100%; }
+  .footer-contact .phones { justify-content: flex-start; }
+}

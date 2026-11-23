@@ -230,7 +230,6 @@
       cursor: pointer;
     }
     .hover-word:hover { color: var(--wine); }
-    .hint { color: var(--muted); font-size: 10px; margin-top: 30px; }
 
     /* Floating preview for hover words */
     .preview {
@@ -277,7 +276,7 @@
     .card {
       position: absolute;
       z-index: 2;
-      width: clamp(110px, 12vw, 190px);
+      width: clamp(130px, 14vw, 220px);
       background: #fff;
       padding: 8px 8px 10px;
       border: 1px solid var(--line);
@@ -287,14 +286,10 @@
     .card:hover { transform: rotate(0) scale(1.06) !important; box-shadow: 0 20px 40px rgba(0,0,0,.16); z-index: 4; }
     .card img { width: 100%; aspect-ratio: 1; object-fit: cover; background: #ddd; }
     .card small { display: block; margin-top: 8px; font: 500 9px var(--mono); color: var(--muted); letter-spacing: .1em; }
-    .c1 { left: 20%; top: 5%;  transform: rotate(-3deg); }
-    .c2 { left: 50%; top: 1%;  transform: translateX(-50%) rotate(2deg); }
-    .c3 { right: 20%; top: 5%; transform: rotate(4deg); }
-    .c4 { left: 7%;  top: 38%; transform: rotate(-6deg); }
-    .c5 { right: 7%; top: 38%; transform: rotate(3deg); }
-    .c6 { left: 20%; bottom: 5%; transform: rotate(2deg); }
-    .c7 { left: 50%; bottom: 1%; transform: translateX(-50%) rotate(-2deg); }
-    .c8 { right: 20%; bottom: 5%; transform: rotate(-3deg); }
+    .c1 { left: 12%;  top: 8%;     transform: rotate(-4deg); }
+    .c2 { right: 12%; top: 8%;     transform: rotate(3deg); }
+    .c3 { left: 12%;  bottom: 8%;  transform: rotate(3deg); }
+    .c4 { right: 12%; bottom: 8%;  transform: rotate(-3deg); }
 
     /* ============ PROCESS ============ */
     .process-lead { font-size: 18px; color: var(--muted); margin: 0 0 36px; max-width: 40ch; }
@@ -368,6 +363,15 @@
     }
       .footer-logo { display: block; line-height: 0; }
     .footer-logo img { height: 44px; width: auto; }
+    .footer-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; text-align: right; }
+    .footer-contact .email { font: italic 500 clamp(15px, 1.15vw, 18px)/1 'Playfair Display', Georgia, serif; letter-spacing: .01em; text-transform: none; color: var(--cream); }
+    .footer-contact .phones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 12px; letter-spacing: .02em; color: var(--cream-muted); }
+    .footer-contact a { transition: color .2s ease; }
+    .footer-contact a:hover { color: #fff; }
+    @media (max-width: 700px) {
+      .footer-contact { align-items: flex-start; text-align: left; width: 100%; }
+      .footer-contact .phones { justify-content: flex-start; }
+    }
   </style>
 </head>
 
@@ -445,7 +449,6 @@
           <img class="chip" src="https://picsum.photos/seed/system-chip/120/80" alt="">
           that help complex ideas land with clarity, across Africa’s tech and social impact ecosystems.
         </p>
-        <div class="label hint">⌘ Hover the underlined words to see the work</div>
       </div>
     </section>
 
@@ -459,14 +462,10 @@
       </div>
 
       <div class="cards">
-        <a href="case-studies/mastercard-foundation-edtech-fellowship.html" class="card c1"><img src="https://picsum.photos/seed/mcf-hero/400/400" alt="Mastercard Foundation"><small>Mastercard Foundation</small></a>
-        <a href="case-studies/stay-by-plan.html" class="card c2"><img src="https://picsum.photos/seed/sbp-hero/400/400" alt="Stay By Plan"><small>Stay By Plan</small></a>
-        <a href="case-studies/eaak-football-club.html" class="card c3"><img src="https://picsum.photos/seed/eaak-hero/400/400" alt="EAAK Football Club"><small>EAAK Football Club</small></a>
-        <a href="case-studies/edtech-mondays.html" class="card c4"><img src="https://picsum.photos/seed/etm-hero/400/400" alt="EdTech Mondays"><small>EdTech Mondays</small></a>
-        <a href="case-studies/mastercard-foundation-edtech-fellowship.html" class="card c5"><img src="https://picsum.photos/seed/mcf-4/400/400" alt="Mastercard Foundation"><small>Mastercard Foundation</small></a>
-        <a href="case-studies/stay-by-plan.html" class="card c6"><img src="https://picsum.photos/seed/sbp-4/400/400" alt="Stay By Plan"><small>Stay By Plan</small></a>
-        <a href="case-studies/eaak-football-club.html" class="card c7"><img src="https://picsum.photos/seed/eaak-4/400/400" alt="EAAK Football Club"><small>EAAK Football Club</small></a>
-        <a href="case-studies/edtech-mondays.html" class="card c8"><img src="https://picsum.photos/seed/etm-4/400/400" alt="EdTech Mondays"><small>EdTech Mondays</small></a>
+        <a href="case-studies/mastercard-foundation-edtech-fellowship.html" class="card c1"><img src="images/projects/mastercard-foundation-edtech-fellowship/step-and-repeat.jpg" alt="Mastercard Foundation"><small>Mastercard Foundation</small></a>
+        <a href="case-studies/stay-by-plan.html" class="card c2"><img src="images/projects/stay-by-plan/after-hours-dj-list.jpg" alt="Stay By Plan"><small>Stay By Plan</small></a>
+        <a href="case-studies/eaak-football-club.html" class="card c3"><img src="images/projects/eaak-football-club/logo-yellow.jpg" alt="EAAK Football Club"><small>EAAK Football Club</small></a>
+        <a href="case-studies/edtech-mondays.html" class="card c4"><img src="images/projects/edtech-mondays/step-and-repeat-team.jpg" alt="EdTech Mondays"><small>EdTech Mondays</small></a>
       </div>
     </section>
 
@@ -478,15 +477,15 @@
         <p class="process-lead">Whether for a founder or an in-house team, the process stays the same.</p>
 
         <div class="step"><span class="step-num">01</span><h3>Listen</h3>
-          <p>I get to know the business, its audience, and what isn’t quite working yet.</p></div>
+          <p>Understanding the core objective, the audience, and the systemic challenges at play before opening a design file.</p></div>
         <div class="step"><span class="step-num">02</span><h3>Shape</h3>
-          <p>Research and insight become a clear direction, shared early so everyone is aligned.</p></div>
+          <p>Defining the creative strategy, establishing structure, and outlining the narrative framework.</p></div>
         <div class="step"><span class="step-num">03</span><h3>Make</h3>
-          <p>The identity comes to life: logo, type, colour, imagery, and the details that make it one system.</p></div>
+          <p>Crafting the visual identity, motion assets, and design systems with precision.</p></div>
         <div class="step"><span class="step-num">04</span><h3>Refine</h3>
-          <p>Feedback comes in, details get sharper, and the brand is tested across real applications.</p></div>
+          <p>Testing, polishing, and aligning every detail with the overarching brand goals.</p></div>
         <div class="step"><span class="step-num">05</span><h3>Launch</h3>
-          <p>A complete brand, with the files and guidelines that keep any team consistent as it grows.</p></div>
+          <p>Deploying cohesive, scalable assets that drive real-world impact and public understanding.</p></div>
       </div>
     </section>
 
@@ -502,11 +501,17 @@
     <div class="footer-row label">
       <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
       <nav>
-        <a href="#">Instagram</a>
-        <a href="#">Behance</a>
-        <a href="#">LinkedIn</a>
+        <a href="https://www.instagram.com/eugenegyasi_" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.behance.net/gyasieugen5d35" target="_blank" rel="noopener">Behance</a>
+        <a href="https://www.linkedin.com/in/eugene-gyasi" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
-      <span>© <span id="year"></span> Eugene Gyasi</span>
+      <div class="footer-contact">
+        <a class="email" href="mailto:eugenegyasihere@gmail.com">eugenegyasihere@gmail.com</a>
+        <div class="phones">
+          <a href="tel:+233560914845">+233 56 091 4845</a>
+          <a href="tel:+233555491036">+233 55 549 1036</a>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -526,7 +531,6 @@
       menuBtn.setAttribute('aria-expanded', false);
     }));
 
-    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Hover-word image preview that follows the cursor
     const preview = document.getElementById('preview');

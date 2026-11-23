@@ -56,9 +56,18 @@
     }
     .story p.small { font-size: clamp(16px, 1.2vw, 19px); line-height: 1.7; color: #4d4842; letter-spacing: 0; max-width: 56ch; }
 
+    .story .highlight { color: var(--wine); }
+    .foundation { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 34px; }
+    .foundation span {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px;
+      background: #fff; color: var(--ink);
+    }
+    .foundation span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--wine); }
+
     /* Stats */
     .stats {
-      display: grid; grid-template-columns: repeat(4, 1fr);
+      display: grid; grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
     }
     .stat { padding: 40px 24px 40px 0; border-right: 1px solid var(--line); }
@@ -66,7 +75,7 @@
     .stat:last-child { border-right: 0; }
     .stat strong {
       display: block;
-      font: 400 clamp(48px, 5vw, 88px)/1 var(--sans);
+      font: 400 clamp(64px, 8vw, 140px)/1 var(--sans);
       letter-spacing: -.05em; color: var(--wine);
       margin-bottom: 14px;
     }
@@ -82,6 +91,53 @@
     .gallery figure:nth-child(2) img { aspect-ratio: 3 / 4; }
     .gallery figure:nth-child(3) img { aspect-ratio: 1; }
     .gallery figcaption { margin-top: 12px; color: var(--muted); }
+
+    /* Experience timeline */
+    .experience { background: var(--bar); color: var(--cream); }
+    .experience .split > .label { color: var(--cream-muted); }
+    .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+    .timeline::before {
+      content: ""; position: absolute; left: 5px; top: 14px; bottom: 14px;
+      width: 1px; background: var(--cream-faint);
+    }
+    .timeline li {
+      position: relative;
+      display: grid; grid-template-columns: 210px 1fr auto; gap: 8px 32px; align-items: baseline;
+      padding: 30px 0 30px 40px;
+      border-bottom: 1px solid rgba(244,231,220,.1);
+      transition: padding-left .3s ease;
+    }
+    .timeline li:last-child { border-bottom: 0; }
+    .timeline li:hover { padding-left: 50px; }
+    .timeline li::before {
+      content: ""; position: absolute; left: 0; top: 40px;
+      width: 11px; height: 11px; border-radius: 50%; box-sizing: border-box;
+      background: var(--bar); border: 1px solid var(--cream-muted);
+    }
+    .timeline li.now::before { background: #c4473f; border-color: #c4473f; box-shadow: 0 0 0 6px rgba(196,71,63,.18); }
+    .timeline .when { color: var(--cream-muted); }
+    .timeline h3 { font: 400 clamp(24px, 2.4vw, 40px)/1.05 var(--sans); letter-spacing: -.03em; margin: 0; }
+    .timeline .org { display: block; margin-top: 8px; font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.4vw, 22px); color: var(--cream-muted); }
+    .timeline .badge {
+      font: 700 9px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+      padding: 7px 10px; border-radius: 999px; background: var(--wine); color: var(--cream);
+    }
+
+    /* Skills */
+    .skills {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px;
+      border-top: 1px solid var(--line); counter-reset: skill;
+    }
+    .skills li {
+      counter-increment: skill;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+      padding: 20px 0; border-bottom: 1px solid var(--line);
+      font-size: clamp(18px, 1.5vw, 24px); letter-spacing: -.015em;
+      transition: color .2s ease, padding-left .3s ease;
+    }
+    .skills li::after { content: counter(skill, decimal-leading-zero); font: 700 10px/1 var(--mono); letter-spacing: .12em; color: var(--muted); }
+    .skills li:hover { color: var(--wine); padding-left: 8px; }
 
     /* Services + Tools */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
@@ -116,7 +172,14 @@
       .stat:nth-child(2) { border-right: 0; }
       .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
       .stat:nth-child(3) { padding-left: 0; }
-      .gallery, .two-col, .facts { grid-template-columns: 1fr; }
+      .gallery, .two-col, .facts, .skills { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: 0; padding-left: 0 !important; }
+      .stat + .stat { border-top: 1px solid var(--line); }
+      .timeline li { grid-template-columns: 1fr; padding-left: 32px; }
+      .timeline li:hover { padding-left: 32px; }
+      .timeline li::before { top: 34px; }
+      .timeline .badge { justify-self: start; }
     }
   </style>
 </head>
@@ -149,9 +212,8 @@
       <div class="clip"><img src="https://picsum.photos/seed/eugene-about-portrait/1200/1500" alt=""></div>
     </div>
     <div class="content">
-      <div class="label">( Backstage )</div>
       <h1>Hi, I’m <em>Eugene.</em></h1>
-      <p class="lead">Brand designer, Accra. I help businesses find their voice and show up like they mean it.</p>
+      <p class="lead">Multidisciplinary Creative Associate bridging complex systems and visual storytelling across Africa’s tech and social impact ecosystems.</p>
       <div><a href="contact.html" class="btn">Say Hello <span class="box">→</span></a></div>
     </div>
   </header>
@@ -162,56 +224,67 @@
     <section class="section wrap split story">
       <div class="label">( My Story )</div>
       <div class="reveal">
-        <p>I started out drawing posters for church events and school shows. I’ve been designing for the stage, one way or another, ever since.</p>
-        <p class="small">Today I work with founders, start-ups and in-house teams to build brand identities that are clear, considered and built to last. I believe good branding isn’t decoration. It’s how a business explains itself when it isn’t in the room. Every project gets the same care, whether it’s a single logo or a full brand system.</p>
-        <p class="small">When I’m not designing, I’m usually at a gig, collecting old book covers, or trying to find the best waakye in Accra.</p>
+        <p>I am a Multidisciplinary Creative Associate with a <span class="highlight">unique foundation.</span></p>
+        <div class="foundation label">
+          <span>Logistics &amp; Supply Chain Management</span>
+          <span>AGI Strategy — BlueDot Impact</span>
+          <span>Creative Associate — MEST Africa</span>
+        </div>
+        <p class="small">Before I began building visual identities for Africa’s tech ecosystem, I studied Logistics and Supply Chain Management. That background in operations—combined with a recent certification in AGI Strategy from BlueDot Impact—shapes how I design today. I don’t just make things look good; I build scalable visual systems, simplify complex policies, and bridge the gap between technical innovation and public understanding.</p>
+        <p class="small">Currently the Creative Associate at MEST Africa, I lead creative direction across startup programmes and ecosystem events, while coaching emerging founders on visual storytelling and pitch deck design. From branding youth football clubs to leading cross-functional teams in digital campaigns, my work is driven by curiosity, structure, and the vibrant energy of Accra.</p>
         <img class="signature" src="images/logo-ink.png" alt="Eugene Gyasi signature" width="1246" height="402">
       </div>
     </section>
 
     <!-- ================= STATS ================= -->
-    <section class="wrap">
+    <section class="wrap" style="padding-bottom:clamp(64px, 9vw, 140px)">
       <div class="stats">
-        <div class="stat reveal"><strong>5+</strong><span class="label muted">Years designing</span></div>
-        <div class="stat reveal"><strong>40+</strong><span class="label muted">Brands launched</span></div>
-        <div class="stat reveal"><strong>6</strong><span class="label muted">Countries served</span></div>
-        <div class="stat reveal"><strong>100%</strong><span class="label muted">Projects with love</span></div>
+        <div class="stat reveal"><strong>5+</strong><span class="label muted">Years of design experience</span></div>
+        <div class="stat reveal"><strong>20+</strong><span class="label muted">Brands supported</span></div>
+        <div class="stat reveal"><strong>3+</strong><span class="label muted">Countries worked across</span></div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="experience">
+      <div class="section wrap split">
+        <div class="label">( Experience )</div>
+        <div>
+          <h2 class="h2">Where I’ve worked.</h2>
+          <ol class="timeline">
+            <li class="now reveal"><span class="when label">Mar 2024 — Present</span><div><h3>Creative Associate</h3><span class="org">MEST Africa</span></div><span class="badge">Current</span></li>
+            <li class="reveal"><span class="when label">Jan 2022 — Oct 2022</span><div><h3>Design Lead</h3><span class="org">Wyetey Group</span></div></li>
+            <li class="reveal"><span class="when label">Jan 2021 — Jun 2021</span><div><h3>Design Intern</h3><span class="org">Adroit 360</span></div></li>
+            <li class="reveal"><span class="when label">Sep 2019 — Aug 2020</span><div><h3>Procurement Clerk</h3><span class="org">Cocoa Marketing Company</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section wrap split">
+      <div class="label">( Core Skills )</div>
+      <div class="reveal">
+        <h2 class="h2">What I bring.</h2>
+        <ul class="skills">
+          <li>Brand Identity Design</li>
+          <li>Visual Storytelling</li>
+          <li>Art Direction</li>
+          <li>Motion Design &amp; Animation</li>
+          <li>Campaign &amp; Event Branding</li>
+          <li>Pitch Deck Design &amp; Founder Coaching</li>
+          <li>Policy Simplification</li>
+          <li>Systems Thinking</li>
+        </ul>
       </div>
     </section>
 
     <!-- ================= GALLERY ================= -->
-    <section class="section wrap">
+    <section class="section wrap" style="padding-top:0">
       <div class="gallery">
         <figure class="reveal"><img src="https://picsum.photos/seed/about-studio/900/1125" alt="Studio desk"><figcaption class="label">The studio, Osu</figcaption></figure>
         <figure class="reveal"><img src="https://picsum.photos/seed/about-sketch/600/800" alt="Sketchbook"><figcaption class="label">Where ideas start</figcaption></figure>
         <figure class="reveal"><img src="https://picsum.photos/seed/about-city/800/800" alt="Accra"><figcaption class="label">Home — Accra</figcaption></figure>
-      </div>
-    </section>
-
-    <!-- ================= SERVICES / TOOLS ================= -->
-    <section class="section wrap split" style="padding-top:0">
-      <div class="label">( The Repertoire )</div>
-      <div class="two-col">
-        <div class="reveal">
-          <h2 class="h2">What I do</h2>
-          <ul class="list">
-            <li><span>Brand identity</span><span class="label">01</span></li>
-            <li><span>Logo design</span><span class="label">02</span></li>
-            <li><span>Brand strategy</span><span class="label">03</span></li>
-            <li><span>Packaging</span><span class="label">04</span></li>
-            <li><span>Editorial &amp; print</span><span class="label">05</span></li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <h2 class="h2">Recognition</h2>
-          <ul class="list">
-            <li><span>Behance Featured</span><span class="label">2025</span></li>
-            <li><span>Ghana Design Week — Speaker</span><span class="label">2024</span></li>
-            <li><span>Brand New — Noted</span><span class="label">2024</span></li>
-            <li><span>Accra Creatives Award</span><span class="label">2023</span></li>
-            <li><span>Type Directors Club — Merit</span><span class="label">2022</span></li>
-          </ul>
-        </div>
       </div>
     </section>
 
@@ -248,14 +321,17 @@
     <div class="footer-row label">
       <a href="index.html" class="footer-logo" aria-label="Eugene Gyasi — Home"><img src="images/logo-cream.png" alt="Eugene Gyasi" width="1246" height="402"></a>
       <nav>
-        <a href="work.html">The Work</a>
-        <a href="case-studies/index.html">Case Studies</a>
-        <a href="services.html">Services</a>
-        <a href="process.html">The Process</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com/eugenegyasi_" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.behance.net/gyasieugen5d35" target="_blank" rel="noopener">Behance</a>
+        <a href="https://www.linkedin.com/in/eugene-gyasi" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
-      <span>© <span data-year></span> Eugene Gyasi</span>
+      <div class="footer-contact">
+        <a class="email" href="mailto:eugenegyasihere@gmail.com">eugenegyasihere@gmail.com</a>
+        <div class="phones">
+          <a href="tel:+233560914845">+233 56 091 4845</a>
+          <a href="tel:+233555491036">+233 55 549 1036</a>
+        </div>
+      </div>
     </div>
   </footer>
 
